@@ -24,7 +24,7 @@ export default function useAuthUser() {
     }
 
     const isLoggedIn = () => {
-        return !!userData.value
+        return !!data.value
     }
 
     const register = async ({ email, password, ...meta }) => {
@@ -32,7 +32,7 @@ export default function useAuthUser() {
             { email, password },
             {
                 data: meta,
-                redirectTo: `${window.location.origin}/me?fromEmail=registrationConfirmation`
+                redirectTo: `${window.location.origin}/me?fromEmail=registrationConfirmation`,
             }
         )
         if (error) throw error
