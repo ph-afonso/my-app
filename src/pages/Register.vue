@@ -15,8 +15,8 @@
 </template>
 
 <script>
-import { defineComponent, ref } from "vue"
-import useAuthUser from "src/composables/UseAuthUser"
+import { defineComponent, ref } from 'vue'
+import useAuthUser from 'src/composables/UseAuthUser'
 import { useRouter } from 'vue-router'
 
 export default defineComponent({
@@ -34,8 +34,17 @@ export default defineComponent({
 
     const handleRegister = async () => {
       try {
-        await register(form.value)
-        router.push({ name: 'me' })
+        // Enviando os dados do formulário para a função register
+        await register({
+          email: form.value.email,
+          password: form.value.password,
+          name: form.value.name
+        })
+        // Redirecionando para a página de confirmação de email
+        router.push({
+          name: 'email-confirmation',
+          query: { email: form.value.email }
+        })
       } catch (error) {
         alert(error.message)
       }

@@ -7,15 +7,18 @@ const routes = [
       { path: 'login', name: 'login', component: () => import('src/pages/Login.vue') },
       { path: 'register', name: 'register', component: () => import('pages/Register.vue') },
       { path: 'email-confirmation', name: 'email-confirmation', component: () => import('pages/EmailConfirmation.vue') },
-      { path: 'me', name: 'me', component: () => import('pages/Me.vue') }
     ]
   },
   {
     path: '/',
     component: () => import('layouts/MainLayout.vue'),
     children: [
-      { path: '', component: () => import('pages/IndexPage.vue') }
-    ]
+      // { path: '', component: () => import('pages/IndexPage.vue') }
+      { path: 'me', name: 'me', component: () => import('pages/Me.vue') }
+    ],
+    meta: {
+      requiresAuth: true
+    }
   },
 
   // Always leave this as last one,
