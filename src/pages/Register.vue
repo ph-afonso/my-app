@@ -6,8 +6,9 @@
         <q-input v-model="form.name" label="Nome" />
         <q-input v-model="form.email" label="Email" />
         <q-input v-model="form.password" label="Password" type="password" />
-        <div class="full-width q-pt-md">
-          <q-btn label="Register" color="primary" class="full-width" outlined rounded type="submit" />
+        <div class="full-width q-pt-md q-gutter-y-sm">
+          <q-btn label="Register" color="primary" class="full-width" rounded type="submit" />
+          <q-btn label="Voltar" color="primary" class="full-width" flat rounded type="button" :to="{ name: 'login' }" />
         </div>
       </div>
     </q-form>
