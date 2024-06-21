@@ -65,10 +65,9 @@ export default function useAuthUser() {
     }
 
     const resetPassword = async (accessToken, newPassword) => {
-        const { data, error } = await supabase.auth.updateUser(
-            accessToken,
-            { password: newPassword }
-        )
+        const { data, error } = await supabase.auth.updateUser({
+            password: newPassword
+          })
 
         if (error) throw error;
         return data;
