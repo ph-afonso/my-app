@@ -1,20 +1,15 @@
 <template>
   <q-page padding>
-    <div class="row">
+    <div class="row flex-center items- center">
       <div id="banner-login" class="col-xs-12 col-sm-6 col-md-6"></div>
       <div class="col-xs-12 col-sm-6 col-md-6">
         <q-form class="row justify-center" @submit.prevent="handleLogin">
-          <div class="col-md-4 col-sm-6 col-xs-10 q-gutter-y-sm">
-            <q-input color="purple-12" label="Email" v-model="form.email">
-              <template v-slot:prepend>
-                <q-icon name="mail" />
-              </template>
-            </q-input>
+          <div class="col-xs-10 col-sm-10 col-md-10 q-gutter-y-sm">
+            <q-input color="primary" label="Email" v-model="form.email" />
             <q-input label="Password" v-model="form.password" type="password" />
             <div class="full-width q-pt-md">
               <q-btn label="Login" color="primary" class="full-width" outlined rounded type="submit" />
             </div>
-
             <q-btn label="Recuperar Senha" color="primary" class="full-width" flat rounded
               :to="{ name: 'forgot-password' }" />
             <!-- <div class="full-width">
@@ -68,5 +63,11 @@ export default defineComponent({
   background-position: center;
   background-repeat: no-repeat;
   height: 45vh;
+}
+
+@media (min-width: 768px) {
+  #banner-login {
+    height: 90vh;
+  }
 }
 </style>
