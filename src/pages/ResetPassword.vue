@@ -1,14 +1,19 @@
 <template>
     <q-page padding>
-        <q-form class="row justify-center" @submit.prevent="handlePasswordReset">
-            <p class="col-12 text-h5 text-center">Resetar Senha</p>
-            <div class="col-md-4 col-sm-6 col-xs-10 q-gutter-y-md">
-                <q-input v-model="password" label="Nova Senha" />
-                <div class="full-width q-pt-md q-gutter-y-sm">
-                    <q-btn label="Enviar" color="primary" class="full-width" rounded type="submit" />
-                </div>
+        <div class="row flex-center justify-center items-center q-ma-lg">
+            <div id="banner-recovery" class="col-xs-12 col-sm-6 col-md-6"></div>
+            <div class="col-xs-12 col-sm-6 col-md-6">
+                <q-form class="row justify-center" @submit.prevent="handlePasswordReset">
+                    <p class="col-12 text-h5 text-center text-primary">Resetar Senha</p>
+                    <div class="col-xs-10 col-sm-10 col-md-10 q-gutter-y-sm">
+                        <q-input v-model="password" label="Nova Senha" />
+                        <div class="full-width q-pt-md q-gutter-y-sm">
+                            <q-btn label="Enviar" color="primary" class="full-width" rounded type="submit" />
+                        </div>
+                    </div>
+                </q-form>
             </div>
-        </q-form>
+        </div>
     </q-page>
 </template>
 
@@ -39,3 +44,19 @@ export default defineComponent({
     }
 })
 </script>
+
+<style scoped>
+#banner-recovery {
+    background-image: url('assets/normal-banner-reset-password.svg');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 45vh;
+}
+
+@media (min-width: 768px) {
+    #banner-recovery {
+        height: 75vh;
+    }
+}
+</style>

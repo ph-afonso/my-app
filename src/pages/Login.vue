@@ -1,10 +1,11 @@
 <template>
   <q-page padding>
-    <div class="row flex-center items- center">
+    <div class="row flex-center items-center">
       <div id="banner-login" class="col-xs-12 col-sm-6 col-md-6"></div>
       <div class="col-xs-12 col-sm-6 col-md-6">
         <q-form class="row justify-center" @submit.prevent="handleLogin">
-          <div class="col-xs-10 col-sm-10 col-md-10 q-gutter-y-sm">
+          <p class="col-12 text-h5 text-center text-primary">Login</p>
+          <div class="col-xs-10 col-sm-10 col-md-10 q-gutter-y-sm border">
             <q-input color="primary" label="Email" v-model="form.email" />
             <q-input label="Password" v-model="form.password" type="password" />
             <div class="full-width q-pt-md">
@@ -43,6 +44,7 @@ export default defineComponent({
       try {
         await login(form.value)
         router.push({ name: 'me' })
+
       } catch (error) {
         alert(error.message)
       }

@@ -8,6 +8,7 @@
 
 <script>
 import useAuthUser from "src/composables/UseAuthUser"
+import { Loading } from 'quasar';
 import { defineComponent } from "vue"
 
 export default defineComponent({
