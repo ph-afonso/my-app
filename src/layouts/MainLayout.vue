@@ -5,7 +5,7 @@
         <q-btn flat dense round icon="menu" aria-label="Menu" @click="toggleLeftDrawer" />
 
         <q-toolbar-title>
-          Quasar App
+          Treehouse
         </q-toolbar-title>
 
         <q-btn-dropdown flat color="white" icon="person">
@@ -23,7 +23,7 @@
     <q-drawer v-model="leftDrawerOpen" show-if-above bordered>
       <q-list>
         <q-item-label header>
-          Quasar App
+          Treehouse
         </q-item-label>
 
         <EssentialLink v-for="link in linksList" :key="link.title" v-bind="link" />

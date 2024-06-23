@@ -6,7 +6,10 @@
                 <q-form class="row justify-center" @submit.prevent="handlePasswordReset">
                     <p class="col-12 text-h5 text-center text-primary">Resetar Senha</p>
                     <div class="col-xs-10 col-sm-10 col-md-10 q-gutter-y-sm">
-                        <q-input v-model="password" label="Nova Senha" />
+                        <q-input v-model="password" label="Nova Senha" lazy-rules :rules="[
+                            val => (val && val.length > 0) || 'Campo obrigatório',
+                            val => (!val || val.length >= 6) || 'Sua senha precisa ter pelo menos 6 caracteres'
+                        ]" />
                         <div class="full-width q-pt-md q-gutter-y-sm">
                             <q-btn label="Enviar" color="primary" class="full-width" rounded type="submit" />
                         </div>
@@ -20,6 +23,7 @@
 <script>
 import { defineComponent, ref } from 'vue'
 import useAuthUser from 'src/composables/UseAuthUser'
+import useNotify from "src/composables/UseNotify";
 import { useRouter, useRoute } from 'vue-router'
 
 
@@ -27,14 +31,22 @@ export default defineComponent({
     name: 'PageResetPassord',
     setup() {
         const { resetPassword } = useAuthUser()
+        const { notifySuccess, notifyError } = useNotify()
         const router = useRouter()
         const route = useRoute()
         const token = route.query.token
         const password = ref('')
 
         const handlePasswordReset = async () => {
-            await resetPassword(token, password.value)
-            router.push({ name: 'login' })
+            try {
+                await resetPassword(token, password.value)
+                notifySuccess('Senha resetada com sucesso !')
+                router.push({ name: 'login' })
+            } catch (error) {
+                notifyError()
+            }
+
+
         }
 
         return {

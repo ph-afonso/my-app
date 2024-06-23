@@ -4,10 +4,14 @@
       <div id="banner-login" class="col-xs-12 col-sm-6 col-md-6"></div>
       <div class="col-xs-12 col-sm-6 col-md-6">
         <q-form class="row justify-center" @submit.prevent="handleLogin">
-          <p class="col-12 text-h5 text-center text-primary">Login</p>
+          <p class="col-12 text-h5 text-center text-primary">Treehouse</p>
           <div class="col-xs-10 col-sm-10 col-md-10 q-gutter-y-sm border">
-            <q-input color="primary" label="Email" v-model="form.email" />
-            <q-input label="Password" v-model="form.password" type="password" />
+            <q-input color="primary" label="Email" v-model="form.email" lazy-rules :rules="[
+              val => (val && val.length > 0) || 'Campo obrigatório'
+            ]" />
+            <q-input label="Password" v-model="form.password" type="password" lazy-rules :rules="[
+              val => (val && val.length > 0) || 'Campo obrigatório'
+            ]" />
             <div class="full-width q-pt-md">
               <q-btn label="Login" color="primary" class="full-width" outlined rounded type="submit" />
             </div>
@@ -25,6 +29,7 @@
 <script>
 import { defineComponent, ref } from "vue"
 import useAuthUser from "src/composables/UseAuthUser"
+import useNotify from "src/composables/UseNotify";
 import { useRouter } from 'vue-router'
 
 export default defineComponent({
@@ -34,6 +39,7 @@ export default defineComponent({
     const router = useRouter()
 
     const { login } = useAuthUser()
+    const { notifySuccess, notifyError } = useNotify()
 
     const form = ref({
       email: '',
@@ -43,10 +49,11 @@ export default defineComponent({
     const handleLogin = async () => {
       try {
         await login(form.value)
+        notifySuccess('Login efetuado com sucesso !')
         router.push({ name: 'me' })
 
       } catch (error) {
-        alert(error.message)
+        notifyError()
       }
     }
 
