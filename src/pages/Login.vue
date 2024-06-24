@@ -17,9 +17,6 @@
             </div>
             <q-btn label="Recuperar Senha" color="primary" class="full-width" flat rounded
               :to="{ name: 'forgot-password' }" />
-            <div class="full-width">
-              <q-btn label="Register" color="primary" class="full-width" flat rounded to="/register" />
-            </div>
           </div>
         </q-form>
       </div>
