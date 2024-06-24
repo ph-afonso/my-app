@@ -17,9 +17,9 @@
             </div>
             <q-btn label="Recuperar Senha" color="primary" class="full-width" flat rounded
               :to="{ name: 'forgot-password' }" />
-            <!-- <div class="full-width">
+            <div class="full-width">
               <q-btn label="Register" color="primary" class="full-width" flat rounded to="/register" />
-            </div> -->
+            </div>
           </div>
         </q-form>
       </div>
@@ -27,10 +27,11 @@
   </q-page>
 </template>
 <script>
-import { defineComponent, ref } from "vue"
+import { defineComponent, ref, onMounted } from "vue"
 import useAuthUser from "src/composables/UseAuthUser"
 import useNotify from "src/composables/UseNotify";
 import { useRouter } from 'vue-router'
+import { route } from "quasar/wrappers";
 
 export default defineComponent({
   name: 'PageLogin',
@@ -38,12 +39,18 @@ export default defineComponent({
   setup() {
     const router = useRouter()
 
-    const { login } = useAuthUser()
+    const { login, isLoggedIn } = useAuthUser()
     const { notifySuccess, notifyError } = useNotify()
 
     const form = ref({
       email: '',
       password: ''
+    })
+
+    onMounted(() => {
+      if (isLoggedIn) {
+        router.push({ name: 'me' })
+      }
     })
 
     const handleLogin = async () => {

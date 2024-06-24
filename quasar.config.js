@@ -49,6 +49,11 @@ module.exports = configure(function (/* ctx */) {
         node: 'node20'
       },
 
+      env: {
+        SUPABASE_URL: import.meta.env.VITE_SUPABASE_URL,
+        SUPABASE_ANON_KEY: import.meta.env.VITE_SUPABASE_KEY
+      },
+
       vueRouterMode: 'history', // available values: 'hash', 'history'
       // vueRouterBase,
       // vueDevtools,
@@ -109,11 +114,7 @@ module.exports = configure(function (/* ctx */) {
       // directives: [],
 
       // Quasar plugins
-      plugins: [
-        'Dialog',
-        'Loading',
-        'Notify'
-      ]
+      plugins: ['Dialog', 'Loading']
     },
 
     // animations: 'all', // --- includes all animations
