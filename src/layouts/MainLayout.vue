@@ -23,7 +23,7 @@
     <q-drawer v-model="leftDrawerOpen" show-if-above bordered>
       <q-list>
         <q-item-label header>
-          Treehouse
+          Menu
         </q-item-label>
 
         <EssentialLink v-for="link in linksList" :key="link.title" v-bind="link" />
@@ -49,10 +49,14 @@ defineOptions({
 
 const linksList = [
   {
-    title: 'Configurações',
-    caption: 'Settings',
-    icon: 'settings',
-    link: 'https://quasar.dev'
+    title: 'Home',
+    icon: 'mdi-home',
+    routeName: 'me'
+  },
+  {
+    title: 'Veiculos',
+    icon: 'mdi-car',
+    routeName: 'car'
   },
 
 ]
