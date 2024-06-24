@@ -1,8 +1,8 @@
 import { createClient } from "@supabase/supabase-js";
 import useAuthUser from "src/composables/UseAuthUser";
 
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
-const supabaseKey = import.meta.env.VITE_SUPABASE_KEY;
+const supabaseUrl = process.env.VITE_SUPABASE_URL;
+const supabaseKey = process.env.VITE_SUPABASE_KEY;
 const supabase = createClient(supabaseUrl, supabaseKey);
 
 supabase.auth.onAuthStateChange((event, session) => {
