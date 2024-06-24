@@ -50,8 +50,8 @@ module.exports = configure(function (/* ctx */) {
       },
 
       env: {
-        SUPABASE_URL: process.env.VITE_SUPABASE_URL,
-        SUPABASE_ANON_KEY: process.env.VITE_SUPABASE_KEY
+        SUPABASE_URL: import.meta.env.VITE_SUPABASE_URL,
+        SUPABASE_ANON_KEY: import.meta.env.VITE_SUPABASE_KEY
       },
 
       vueRouterMode: 'history', // available values: 'hash', 'history'
