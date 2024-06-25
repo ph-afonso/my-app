@@ -42,7 +42,8 @@ const routes = [
     children: [
       // { path: '', component: () => import('pages/IndexPage.vue') }
       { path: "me", name: "me", component: () => import("pages/Me.vue") },
-      { path: "car", name: "car", component: () => import("pages/car/List.vue") },
+      { path: "car", name: "car", component: () => import("pages/veiculos/List.vue") },
+      { path: "form-car", name: "form-car", component: () => import("pages/veiculos/Form.vue") },
       
     ],
     meta: {
