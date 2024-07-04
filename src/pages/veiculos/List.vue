@@ -1,6 +1,13 @@
 <template>
     <q-page padding>
+
         <div class="row q-gutter-x-sm">
+            <div class="col-2">
+                <Veiculos />
+            </div>
+            <div class="col-2">
+                <Veiculos />
+            </div>
             <q-table class="col-12" :rows="abastecimentos" :columns="columnsAbastecimentos" row-key="id"
                 :loading="loading">
                 <template v-slot:top>
@@ -40,6 +47,7 @@
 
 <script>
 import { defineComponent, ref, onMounted } from "vue";
+import Veiculos from 'components/Veiculos/Veiculos.vue';
 import useApi from "src/composables/UseApi";
 import useNotify from "src/composables/UseNotify";
 import VueApexCharts from 'vue3-apexcharts';
@@ -59,6 +67,7 @@ export default defineComponent({
     name: 'PageCarList',
 
     components: {
+        Veiculos,
         Apexchart: VueApexCharts,
     },
 
@@ -134,7 +143,7 @@ export default defineComponent({
             abastecimentos,
             loading,
             chartOptions,
-            chartSeries,
+            chartSeries
         };
     }
 });
