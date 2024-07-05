@@ -2,10 +2,7 @@
     <q-page padding>
 
         <div class="row q-gutter-x-sm">
-            <div class="col-2">
-                <Veiculos />
-            </div>
-            <div class="col-2">
+            <div class="col-sm-12">
                 <Veiculos />
             </div>
             <q-table class="col-12" :rows="abastecimentos" :columns="columnsAbastecimentos" row-key="id"
