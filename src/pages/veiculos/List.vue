@@ -1,43 +1,52 @@
 <template>
-    <q-page padding>
-
-        <div class="row q-gutter-x-sm">
-            <div class="col-sm-12">
+    <q-page padding class="q-gutter-xs">
+        <div class="row no-wrap q-gutter-xs">
+            <div class="col-6">
                 <Veiculos />
             </div>
-            <q-table class="col-12" :rows="abastecimentos" :columns="columnsAbastecimentos" row-key="id"
-                :loading="loading">
-                <template v-slot:top>
-                    <span class="text-h6">
-                        Abastecimentos
-                    </span>
-                    <q-space />
-                    <q-btn icon="mdi-plus" label="Novo Abastecimento" color="primary" dense
-                        :to="{ name: 'form-abastecimento' }" />
-                </template>
-                <template v-slot:body-cell-actions="props">
-                    <q-td class="q-gutter-x-sm" :props="props">
-                        <q-btn icon="mdi-pencil-outline" color="primary" dense>
-                            <q-tooltip>
-                                Editar
-                            </q-tooltip>
-                        </q-btn>
-                        <q-btn icon="mdi-delete-outline" color="negative" dense>
-                            <q-tooltip>
-                                Deletar
-                            </q-tooltip>
-                        </q-btn>
-                    </q-td>
-                </template>
-            </q-table>
+            <div class="col-6">
+                <Alertas />
+            </div>
         </div>
-
-        <div class="row q-gutter-x-sm">
-            <q-card class="col-12">
-                <q-card-section>
-                    <apexchart type="line" :options="chartOptions" :series="chartSeries" height="400" />
-                </q-card-section>
-            </q-card>
+        <div class="row no-wrap q-gutter-xs">
+            <div class="col-xs-12 col-sm-12 col-md-6">
+                <q-card>
+                    <q-card-section>
+                        <q-table class="col-12" :rows="abastecimentos" :columns="columnsAbastecimentos" row-key="id"
+                            :loading="loading">
+                            <template v-slot:top>
+                                <span class="text-h6">
+                                    Abastecimentos
+                                </span>
+                                <q-space />
+                                <q-btn icon="mdi-plus" label="Novo Abastecimento" color="primary" dense
+                                    :to="{ name: 'form-abastecimento' }" />
+                            </template>
+                            <template v-slot:body-cell-actions="props">
+                                <q-td class="q-gutter-x-sm" :props="props">
+                                    <q-btn icon="mdi-pencil-outline" color="primary" dense>
+                                        <q-tooltip>
+                                            Editar
+                                        </q-tooltip>
+                                    </q-btn>
+                                    <q-btn icon="mdi-delete-outline" color="negative" dense>
+                                        <q-tooltip>
+                                            Deletar
+                                        </q-tooltip>
+                                    </q-btn>
+                                </q-td>
+                            </template>
+                        </q-table>
+                    </q-card-section>
+                </q-card>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-6">
+                <q-card>
+                    <q-card-section>
+                        <apexchart type="line" :options="chartOptions" :series="chartSeries" height="300" />
+                    </q-card-section>
+                </q-card>
+            </div>
         </div>
     </q-page>
 </template>
@@ -45,6 +54,7 @@
 <script>
 import { defineComponent, ref, onMounted } from "vue";
 import Veiculos from 'components/Veiculos/Veiculos.vue';
+import Alertas from 'components/Veiculos/Alertas.vue';
 import useApi from "src/composables/UseApi";
 import useNotify from "src/composables/UseNotify";
 import VueApexCharts from 'vue3-apexcharts';
@@ -65,6 +75,7 @@ export default defineComponent({
 
     components: {
         Veiculos,
+        Alertas,
         Apexchart: VueApexCharts,
     },
 
