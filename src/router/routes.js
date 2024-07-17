@@ -43,8 +43,7 @@ const routes = [
       // { path: '', component: () => import('pages/IndexPage.vue') }
       { path: "me", name: "me", component: () => import("pages/Me.vue") },
       { path: "car", name: "car", component: () => import("pages/veiculos/List.vue") },
-      { path: "form-car", name: "form-car", component: () => import("pages/veiculos/Form.vue") },
-      
+      { path: "abastecimentos", name: "abastecimentos", component: () => import("src/pages/veiculos/Abastecimentos.vue") }
     ],
     meta: {
       requiresAuth: true,

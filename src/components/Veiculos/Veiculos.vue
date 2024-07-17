@@ -3,7 +3,7 @@
         <div class="row col flex-center">
             <div class="col-xs-6">
                 <q-avatar square size="200px">
-                    <q-img src="/images/veiculos/c3.png" :fit="contain" />
+                    <q-img src="images/veiculos/c3.png" :fit="contain" />
                 </q-avatar>
             </div>
             <div class="col-xs-6 flex justify-center">

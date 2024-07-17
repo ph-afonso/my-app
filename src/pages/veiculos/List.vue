@@ -20,7 +20,7 @@
                                 </span>
                                 <q-space />
                                 <q-btn icon="mdi-plus" label="Novo Abastecimento" color="primary" dense
-                                    :to="{ name: 'form-abastecimento' }" />
+                                    :to="{ name: 'abastecimentos' }" />
                             </template>
                             <template v-slot:body-cell-actions="props">
                                 <q-td class="q-gutter-x-sm" :props="props">
